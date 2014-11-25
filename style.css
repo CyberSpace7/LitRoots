@@ -1,0 +1,204 @@
+html {
+	height:100%;
+}
+body {
+	height:100%;
+	margin:0px;
+	font-family: sans-serif, Arial;
+	font-size: 10px;
+}
+#page-wrapper {
+	float:left;
+	height:100%;
+	width:100%;
+	background-color:#FEFFEC;
+}
+
+#site-menu {
+	position: absolute;
+	float:left;
+	width:100%;
+	height: 50px;
+	background-color:#800000;
+	z-index: 99;
+}
+
+#sm-content {
+	float:left;
+	min-width:100%;
+	width:100%;
+	padding: 5px;
+}
+
+#tools-menu {
+	position:absolute;
+	top:50%;
+	height:500px;
+	margin-top:-250px; /* negative half of the height */
+	width: 85px;
+	min-width: 85px;
+	z-index: 99;
+	}
+
+#tm-content {
+	float:left;
+	height:100%;
+	min-height:100%;
+	width: 75px;
+	background-color:#FCEBC2;
+}
+
+#tm-tab {
+	float:right;
+	position: relative;
+	top:50%;
+	margin-top:-20px; /* negative half of the height */
+	height:40px;
+	padding: 0;
+	width: 10px;
+	min-width: 10px;
+	background-color:#FCEBC2;
+}
+
+#main-section {
+	float:left;
+	height:100%;
+	width:100%;
+	background-color:#ffffff;
+}
+
+#content {
+	position: relative;
+	margin-top: 50px;
+	padding: 8px;
+	height:92%;
+}
+
+#footer {
+	position: absolute;
+	bottom: 0;
+	float:left;
+	width:100%;
+	height: 30px;
+	background-color:#800000;
+	z-index: 99;
+}
+
+#footer-content {
+	float:left;
+	min-width:100%;
+	width:100%;
+	padding: 5px;
+}
+
+
+.gridster ul {
+  list-style: none;
+  width: 80%;
+}
+
+.gridster li {
+	overflow: hidden;
+  background-color: #FCFFE6;
+}
+
+.gridster p {
+	
+}
+
+.scroll-pane {
+	width: 99%;
+}
+
+.module-entry {
+	background-color:  #FEFFF9;
+	padding: 6px;
+	margin: 4px;
+	max-height: 50px;
+	overflow: hidden;
+}
+
+.module-entry-content {
+	border 1px solid #676C72;
+}
+
+.module-entry p, .module-entry li, .module-entry h3, .module-entry * {
+	font-family: sans-serif, Arial;
+	font-size: 10px;
+	vertical-align: top;
+}
+.module-entry textarea {
+		border: 1px solid #cccccc;
+		font-size: 10px;
+		line-height: 80%;
+	}
+
+.grid {
+  position: relative;
+  width: 100%;
+}
+
+.grid div {
+  height: 120px; 
+  position: absolute; 
+  width: 80px;
+}
+.grid div[data-ss-colspan="2"] { width: 170px; }
+.grid div[data-ss-colspan="3"] { width: 260px; }
+.grid div[data-ss-colspan="4"] { width: 350px; }
+
+    .onoffswitch {
+    position: relative; width: 59px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+    }
+    .onoffswitch-checkbox {
+    display: none;
+    }
+    .onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #A1A1A1; border-radius: 20px;
+    }
+    .onoffswitch-inner {
+    width: 200%; margin-left: -100%;
+    -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
+    -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;
+    }
+    .onoffswitch-inner:before, .onoffswitch-inner:after {
+    float: left; width: 50%; height: 25px; padding: 0; line-height: 25px;
+    font-size: 10px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+    }
+    .onoffswitch-inner:before {
+    content: "ON";
+    padding-left: 5px;
+    background-color: #17A65A; color: #000000;
+    }
+    .onoffswitch-inner:after {
+    content: "OFF";
+    padding-right: 5px;
+    background-color: #787878; color: #A1A1A1;
+    text-align: right;
+    }
+    .onoffswitch-switch {
+    width: 25px; margin: 0px;
+    background: #C7C3C3;
+    border: 2px solid #A1A1A1; border-radius: 20px;
+    position: absolute; top: 0; bottom: 0; right: 30px;
+    -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
+    -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s;
+    }
+    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+    }
+    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px;
+    }
+    .remove-mod {
+    	position: absolute;
+    	top: 0;
+    	right: 0;	
+    }
+    .red {
+    	color: #ff0000;
+    }
+    

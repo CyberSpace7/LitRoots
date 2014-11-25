@@ -1,0 +1,219 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<script src="jquery.min.js"></script>
+ <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script type="text/javascript" src="jquery.mousewheel.js"></script>
+<script type="text/javascript" src="jquery.jscrollpane.min.js"></script>
+<script src="jquery.gridster.min.js"></script>
+<script src="jquery.jeditable.mini.js"></script>
+<script type="text/javascript">
+$(function() {	
+  $('#tm-tab').toggle(function() {
+    $('#tools-menu').animate({
+      left: '-=75'
+    }, 1000);
+  },function() {
+    $('#tools-menu').animate({
+      left: '+=75'
+    }, 1000);
+  })
+});
+
+</script>
+
+<script type="text/javascript">
+    $(function()
+{
+	$('.scroll-pane').each(
+		function()
+		{
+			$(this).jScrollPane(
+				{
+					showArrows: $(this).is('.arrow')
+				}
+			);
+			var api = $(this).data('jsp');
+			var throttleTimeout;
+			var myJScrollPane = $(this).jScrollPane;
+			$(window).bind(
+				'resize',
+				function()
+				{
+					if ($.browser.msie) {
+						// IE fires multiple resize events while you are dragging the browser window which
+						// causes it to crash if you try to update the scrollpane on every one. So we need
+						// to throttle it to fire a maximum of once every 50 milliseconds...
+						if (!throttleTimeout) {
+							throttleTimeout = setTimeout(
+								function()
+								{
+									JScrollBar.getVerticalScrollBar().setUnitIncrement(255);
+									api.reinitialise();
+									throttleTimeout = null;
+								},
+								50
+							);
+						}
+					} else {
+						JScrollBar.getVerticalScrollBar().setUnitIncrement(255);
+						api.reinitialise();
+					}
+				}
+			);
+		}
+	)
+
+});
+</script>
+
+<script type="text/javascript">
+$(function(){  
+$(".gridster ul").gridster({
+widget_margins: [10, 10],
+max_size_y: 4,
+widget_base_dimensions: [140, 140]
+}).data('gridster').disable();
+});
+</script>
+
+<script type="text/javascript">
+$(function() {
+      $(".module-entry").editable("http://www.domain.com/editdata/", { 
+        indicator : "<img src='img/indicator.gif'>",
+        type      : 'textarea',
+        onblur    : 'submit',
+        tooltip   : 'Click to edit...',
+        cancel    : 'Cancel'
+    });
+ });
+</script>
+<script type="text/javascript">
+$(function() {
+	
+	$('.gridster ul').on('click', '.remove-mod', function(event){	
+	var modRemoved = $(this).parent();
+	
+	switch (editMode) {
+  				  case 'false':
+     			   alert('Login!');
+     			   break;
+   					 case 'true':
+   					 
+   					 		$( "#dialog-message" ).dialog({
+			modal: true,
+			buttons: {
+				"Delete": function() {
+					$( this ).dialog( "close" );
+					switch (editMode) {
+  				  case 'false':
+     			   alert('Login!');
+     			   break;
+   					 case 'true':
+   			     alert('Edit Mode Enabled');
+   			     $(".gridster ul").gridster().data('gridster').remove_widget(modRemoved);
+   			     break;
+  			  	default:
+   		     alert('zzz');
+					}
+				},
+				Cancel: function() {
+					$( this ).dialog( "close" );
+				}
+		}
+	});
+   			     
+   			     break;
+  			  	default:
+   		     alert('zzz');
+					}	
+ });
+});
+</script>
+<script type="text/javascript">
+	window.editMode = "false";
+$(function(){	
+	$('input#myonoffswitch').attr('checked', false);
+	$('.module-entry').editable('disable');
+	$('body').on('click', 'input#myonoffswitch', function()
+		{
+  		var state = $(this).data('state');
+		    switch(state){
+    	    case 1 :
+      	  case undefined : window.editMode = "true"; $('.module-entry').editable('enable'); $(".gridster ul").gridster().data('gridster').enable(); $(this).data('state', 2); break;
+        	case 2 : window.editMode = "false"; $('.module-entry').editable('disable'); $(".gridster ul").gridster().data('gridster').disable(); $(this).data('state', 1); break;
+    			}
+  			});
+			});
+</script>
+<script type="text/javascript">
+$(function(){
+  $('#add-mod-1x1').click(function() {
+  	$(".gridster ul").gridster().data('gridster').add_widget('<li data-row="1" data-col="1" data-sizex="1" data-sizey="1"><div class="module-entry"><p>1 lorem ipsum dolor sit amet, consectetur adipiscing elit. phasellus in nisl nec sapien commodo placerat. sed non magna nibh. mauris in orci sed tortor pharetra consequat quis non nibh. class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. suspendisse suscipit semper magna. morbi adipiscing enim a risus scelerisque sed mollis libero sollicitudin. </p></div><div class="remove-mod">X</div></li>', 1, 1);
+  });
+});
+  	</script>
+
+<link rel="stylesheet" type="text/css" href="style.css">
+<link type="text/css" href="jquery.jscrollpane.css" rel="stylesheet" media="all" />
+<link type="text/css" href="jquery.gridster.min.css" rel="stylesheet" media="all" />
+<link type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" media="all" />
+<title>[Story] Home</title>
+</head>
+<body>
+<div id="page-wrapper">
+	<div id="site-menu">
+	  <div id="sm-content">
+	  Litroots
+	</div>
+	</div>
+	<div id="tools-menu">
+	  <div id="tm-content">
+	  	    <div class="onoffswitch">
+    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch">
+    <label class="onoffswitch-label" for="myonoffswitch">
+    <div class="onoffswitch-inner"></div>
+    <div class="onoffswitch-switch"></div>
+    </label>
+    </div> 
+    <div id="add-mod-1x1">1x1</div>
+		</div>
+		<div id="tm-tab">
+		</div>
+	</div>
+	<div id="main-section">
+		<div id="content" class="scroll-pane">
+			
+			<div class="gridster">
+<ul>
+<li data-row="1" data-col="1" data-sizex="1" data-sizey="1" id="modid01"><div class="module-entry"><p>1 lorem ipsum dolor sit amet, consectetur adipiscing elit. phasellus in nisl nec sapien commodo placerat. sed non magna nibh. mauris in orci sed tortor pharetra consequat quis non nibh. class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. suspendisse suscipit semper magna. morbi adipiscing enim a risus scelerisque sed mollis libero sollicitudin. </p></div><div class="remove-mod">X</div></li>
+<li data-row="2" data-col="1" data-sizex="1" data-sizey="1" id="modid02"><div class="module-entry"><p>2 lorem ipsum dolor sit amet, consectetur adipiscing elit. phasellus in nisl nec sapien commodo placerat. sed non magna nibh. mauris in orci sed tortor pharetra consequat quis non nibh. class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. suspendisse suscipit semper magna. morbi adipiscing enim a risus scelerisque sed mollis libero sollicitudin. </p></div></li>
+<li data-row="3" data-col="1" data-sizex="1" data-sizey="1" id="modid03"><div class="module-entry"><p>3 lorem ipsum dolor sit amet, consectetur adipiscing elit. phasellus in nisl nec sapien commodo placerat. sed non magna nibh. mauris in orci sed tortor pharetra consequat quis non nibh. class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. suspendisse suscipit semper magna. morbi adipiscing enim a risus scelerisque sed mollis libero sollicitudin. </p></div></li>
+<li data-row="1" data-col="2" data-sizex="2" data-sizey="1" id="modid04"><div class="module-entry"><p>4 lorem ipsum dolor sit amet, consectetur adipiscing elit. phasellus in nisl nec sapien commodo placerat. sed non magna nibh. mauris in orci sed tortor pharetra consequat quis non nibh. class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. suspendisse suscipit semper magna. morbi adipiscing enim a risus scelerisque sed mollis libero sollicitudin. </p></div></li>
+<li data-row="2" data-col="2" data-sizex="2" data-sizey="2" id="modid05"><div class="module-entry"><p>5 lorem ipsum dolor sit amet, consectetur adipiscing elit. phasellus in nisl nec sapien commodo placerat. sed non magna nibh. mauris in orci sed tortor pharetra consequat quis non nibh. class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. suspendisse suscipit semper magna. morbi adipiscing enim a risus scelerisque sed mollis libero sollicitudin. </p></div></li>
+<li data-row="1" data-col="4" data-sizex="1" data-sizey="1" id="modid06"><div class="module-entry"><p>6 lorem ipsum dolor sit amet, consectetur adipiscing elit. phasellus in nisl nec sapien commodo placerat. sed non magna nibh. mauris in orci sed tortor pharetra consequat quis non nibh. class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. suspendisse suscipit semper magna. morbi adipiscing enim a risus scelerisque sed mollis libero sollicitudin. </p></div></li>
+<li data-row="2" data-col="4" data-sizex="2" data-sizey="1" id="modid07"><div class="module-entry"><p>7 lorem ipsum dolor sit amet, consectetur adipiscing elit. phasellus in nisl nec sapien commodo placerat. sed non magna nibh. mauris in orci sed tortor pharetra consequat quis non nibh. class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. suspendisse suscipit semper magna. morbi adipiscing enim a risus scelerisque sed mollis libero sollicitudin. </p></div></li>
+<li data-row="3" data-col="4" data-sizex="1" data-sizey="1" id="modid08"><div class="module-entry"><p>8 lorem ipsum dolor sit amet, consectetur adipiscing elit. phasellus in nisl nec sapien commodo placerat. sed non magna nibh. mauris in orci sed tortor pharetra consequat quis non nibh. class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. suspendisse suscipit semper magna. morbi adipiscing enim a risus scelerisque sed mollis libero sollicitudin. </p></div></li>
+<li data-row="1" data-col="5" data-sizex="1" data-sizey="1" id="modid09"><div class="module-entry"><p>9 lorem ipsum dolor sit amet, consectetur adipiscing elit. phasellus in nisl nec sapien commodo placerat. sed non magna nibh. mauris in orci sed tortor pharetra consequat quis non nibh. class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. suspendisse suscipit semper magna. morbi adipiscing enim a risus scelerisque sed mollis libero sollicitudin. </p></div></li>
+<li data-row="3" data-col="5" data-sizex="1" data-sizey="1" id="modid10"><div class="module-entry"><p>10 lorem ipsum dolor sit amet, consectetur adipiscing elit. phasellus in nisl nec sapien commodo placerat. sed non magna nibh. mauris in orci sed tortor pharetra consequat quis non nibh. class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. suspendisse suscipit semper magna. morbi adipiscing enim a risus scelerisque sed mollis libero sollicitudin. </p></div></li>
+<li data-row="1" data-col="6" data-sizex="1" data-sizey="1" id="modid11"><div class="module-entry"><p>11 lorem ipsum dolor sit amet, consectetur adipiscing elit. phasellus in nisl nec sapien commodo placerat. sed non magna nibh. mauris in orci sed tortor pharetra consequat quis non nibh. class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. suspendisse suscipit semper magna. morbi adipiscing enim a risus scelerisque sed mollis libero sollicitudin. </p></div></li>
+<li data-row="2" data-col="6" data-sizex="1" data-sizey="2" id="modid12"><div class="module-entry"><p>12 lorem ipsum dolor sit amet, consectetur adipiscing elit. phasellus in nisl nec sapien commodo placerat. sed non magna nibh. mauris in orci sed tortor pharetra consequat quis non nibh. class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. suspendisse suscipit semper magna. morbi adipiscing enim a risus scelerisque sed mollis libero sollicitudin. </p></div></li>
+</ul>
+</div>
+			
+            	</div></div></div><!-- #container -->
+            
+            </div>
+	</div>
+	<div id="footer">
+		<div id="footer-content">
+		Footer
+		</div>
+	</div>
+	<div id="dialog-message" style="display: none;">
+		Are you sure you want to <span class="red">Delete</span> this Card?
+		</div>
+</div>
+</body>
+</html>
